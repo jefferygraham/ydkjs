@@ -68,15 +68,124 @@
 
 * **Procedural**
 
-  * Orgainzed top-down, linear progression through 
+  * Orgainzed top-down, linear progression through a set of operations that are called together (procedures)
 
 * **Object-oriented** (OO/classes)
 
+  * Puts data and logic into units (classes)
+
 * **Functional** (FP)
+
+  * Organized by functions and uses how those functions change as values
+
+* No right or wrong paradigm. Just guides how you approach problems/solutions. And how you structure/maintain your code
+
+* Some languages slant in a particular direction:
+
+  * C -> procedural
+
+  * Java/C++ -> OOP
+
+  * Haskel -> FP
+
+* Multi-paradigmed languages offer flexibility -> JS is multi-paradigmed
+
 ## *Backwards & Forwards*
+
+* JS is, and must be, **backwards-compatible**:
+
+  * Once a spec is accepted, it can never be invalid. 
+
+* JS developers are assured that their code will always work as designed, making JS a safe choice for web programming.
+
+* JS is **NOT** ***forward-compatible*** (ensuring that new code can run in old environments without breaking) 
+
+* HTML/CSS is forward-compatible (new HTML/CSS can run in old browsers without breaking it)
+  
+* Browsers can can skip over HTML/CSS declarations it might not understand, but a program can't skip over declarations with causing chaos.
+
 ### Jumping the Gaps
+
+* Transpiling converts code from one form to another. 
+
+* Used to solve forward-compatibility problems.
+
+* Transpiler are usually used to solve forward-compatabilty syntax issues
+  
+| NOTE: |
+| :--- |
+| JS developers should use the latest implementation of JS so code is clean and easy to understand
+
 ### Filling the Gaps
+
+* Polyfills are used to solve forward-compatibility isses not realted to syntax errors (ex. missing API methods)
+  
 ## *What's in an Interpretation?*
+
+* Debate: JS, interpreted script or compiled program?
+
+  * Scripting languages: 
+    * Use dynamic typing 
+    * Distribute the source code (not the binary form)
+    * Executed top down, line by line
+    * Not parsed before executed
+  
+  * Compiled programs:
+    * Ise static typing
+    * Represent the program as binary before execution
+  
+  * Parsed languages;
+    * Parsed & compiled before execution (transformed into en executable form)
+    * All compiled languages are parsed
+    * JS is parsed before execution
+      * Calls for early errors:
+        * Recognizing duplicate parameter names, so it is paresed before execution
+  
+  * Is JS compiled?
+    * More yes than no
+      * Parsed JS is converted to binary and doesn't switch back to line-by-line execution (very inefficient)
+      * The binary code is execute by the JVM
+
+  * Flow of JS program
+    1. Transpiled * packed (Babel & WebPack) and handed to the JS engine in a form different from which it started
+    2. JS engine parses the code to an **Abstract Syntax Tree (AST)** - executable
+    3. JS engine converts the AST -> binary intermediate representation -> optimized by **Just-In-Time (JIT)** compiler
+    4. JVM runs the program
+
+| Takeaway: |
+| :--- |
+| In spirit, if not in practice, JS is a compiled language.
+  
 ### Web Assembly (WASM) 
+
+* How fast JS can parse & execute a program is a big concern 
+* **ASM.js** 
+  * Used to transpile Unreal 3 game engine (written in C) to JS
+  * written in uncommon form -> signal typing info for optimization
+  * Addresses some of that concern
+  * Shows that JS could be used to create transpiled versions of programs that ran more effciently
+* **WASM**
+  * Used to convert non-JS programs to be able to run on the JS engine, but also get by the delays caused by parsing/compiling -> represents the program in an unlike JS form
+  * Way to bring more non-JS programs to web platforms
+  * Relieves the pressure to add features to JS that are mostly/exclusively intended to be used by transpiled programs from other languages. 
+  * WASM is evolving to become a cross-platform virtual machine (VM) of sorts, where programs can be compiled once and run in a variety of different system environments.
+
+| Takeaway: |
+| :--- |
+| WASM significantly augments what the web (including JS) can accomplish
+
+  
 ## *Strictly Speaking*
-## **Defined*
+
+* Use strict mode: `"use strict";`
+  * Guide to the best way to do things (helps the optimizatiom & efficiency of code)
+  
+## **Defined**
+**JavaScript**
+: JS is an implementation of the ECMAScript standard (version ES2019 as of this writing), which is guided by the TC39 committee and hosted by ECMA. It runs in browsers and other JS environments such as Node.js.
+
+JS is a multi-paradigm language, meaning the syntax and capabilities allow a developer to mix and match (and bend and reshape!) concepts from various major paradigms, such as procedural, object-oriented (OO/classes), and functional (FP).
+
+JS is a compiled language, meaning the tools (including the JS engine) process and verify a program (reporting any errors!) before it executes.
+
+With our language now defined, let's start getting to know its ins and outs.
